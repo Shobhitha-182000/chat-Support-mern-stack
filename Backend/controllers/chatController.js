@@ -18,16 +18,15 @@ const addMessage = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-const sendingGemini=async(req,res)=>{
-    try{
-        const {prompt}=req.body;
-        const result= await run(prompt);
-        
-          res.json(result)
-
-    }catch(error){
-        console.log(error);
-    }
-}
+const sendingGemini = async (req, res) => {
+  try {
+      const { prompt } = req.body;
+      const result = await run(prompt);
+      res.json({ response: result });
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 module.exports = { addMessage,sendingGemini };

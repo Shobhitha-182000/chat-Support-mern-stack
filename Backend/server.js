@@ -5,11 +5,14 @@ const chatRoutes = require('./routes/chatRoutes');
 const cors = require('cors');
  
 
+
 dotenv.config();
 
 connectDB();
 
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 app.use(express.json());
 app.use(cors());
