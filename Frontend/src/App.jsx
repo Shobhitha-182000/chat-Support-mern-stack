@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Segment } from 'semantic-ui-react';
 import ChatBotComponent from './components/ChatBotComponent';
 import Demo from './Demo';
+import GeminiChat from './components/GeminiChat';
+import './App.css'
 
 
 function App() {
@@ -9,10 +11,12 @@ function App() {
 
   return (
     <div className="App">
-      <Segment floated='right'>
+      <div className="rightside">
+        <GeminiChat/>
+      </div>
+      {/* <div className='leftside'>
         <ChatBotComponent />
-      
-      </Segment>
+      </div> */}
     </div>
   );
 }

@@ -6,15 +6,10 @@ import ImmenphereAvatar from './Immenphere.jpg';
 
 function ChatBotComponent() {
   const [name, setName] = useState("");
-   
-  
 
   const handleEnd = ({ steps, values }) => {
-    console.log('HandleEnd called'); // Check if this is printed
     const issue = values[1];
     const message = values[2];
-    console.log('Issue:', issue); // Debugging line
-    console.log('Message:', message); // Debugging line
   
     axios
       .post("http://localhost:3000/api/chat", { name, issue, message })
@@ -25,7 +20,6 @@ function ChatBotComponent() {
         console.error("Error saving message:", error);
       });
   };
-  
 
   const steps = [
     {
@@ -109,17 +103,22 @@ function ChatBotComponent() {
       end: true,
     },
   ];
-  
+
+  const customStyle = {
+    headerTitle: {
+      color: 'orange',
+    },
+  };
 
   return (
     <Segment floated="right">
-   <ChatBot
-  steps={steps}
-  handleEnd={handleEnd}
-  headerTitle="Chat with Immensphere"
-  botAvatar={ImmenphereAvatar}
-/>
-
+      <ChatBot
+        steps={steps}
+        handleEnd={handleEnd}
+        headerTitle="Chat with Immensphere"
+        botAvatar={ImmenphereAvatar}
+        style={customStyle}
+      />
     </Segment>
   );
 }
